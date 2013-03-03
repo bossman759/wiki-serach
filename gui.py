@@ -43,30 +43,58 @@ class simpleapp_tk(Tkinter.Tk):
             
             for row in rows:
                 #printing second & third column(See tuples)
-                print row[1]
-                self.labelVariable.set(row[1])
-                print row[2]
-                self.labelVariable.set(row[2])
+                label = ""
+                label += row[1] + "\n" + row[2] + "\n"
+                self.labelVariable.set(label)
             cur.execute("select * from Websites where Name LIKE ? OR Url LIKE ? LIMIT 12", ('%'+t+'%', '%'+t+'%'))
             rows = cur.fetchall()
             
             for row in rows:
                 #printing second & third column(See tuples)
-                print row[1]
-                self.labelVariable.set(row[1])
-                print row[2]
-                self.labelVariable.set(row[2])
+                label = ""
+                label += row[1] + "\n" + row[2] + "\n"
+                self.labelVariable.set(label)
             cur.execute("select * from Things where Name LIKE ? OR Price LIKE ? LIMIT 12", ('%'+t+'%', '%'+t+'%'))
             rows = cur.fetchall()
             
             for row in rows:
                 #printing second & third column(See tuples)
-                self.labelVariable.set(row[1])
-                self.labelVariable.set(row[2])
+                label = ""
+                label += row[1] + "\n" + row[2] + "\n"
+                self.labelVariable.set(label)
         
         
     def OnPressEnter(self,event):
-        #self.labelVariable.set( self.entryVariable.get()+" (You pressed ENTER)" )
+        with con:
+            cur = con.cursor()
+            t = self.entryVariable.get()
+            #self.labelVariable.set( self.entryVariable.get()+" (You clicked the button)" )
+            #SQL query for search through Dict table
+            cur.execute("select * from Dict where Def LIKE ? OR word LIKE ? LIMIT 12", ('%'+t+'%', '%'+t+'%'))
+            rows = cur.fetchall()
+            
+            for row in rows:
+                #printing second & third column(See tuples)
+                label = ""
+                label += row[1] + "\n" + row[2] + "\n"
+                self.labelVariable.set(label)
+            cur.execute("select * from Websites where Name LIKE ? OR Url LIKE ? LIMIT 12", ('%'+t+'%', '%'+t+'%'))
+            rows = cur.fetchall()
+            
+            for row in rows:
+                #printing second & third column(See tuples)
+                #print row[1]
+                label = ""
+                label += row[1] + "\n" + row[2] + "\n"
+                self.labelVariable.set(label)
+            cur.execute("select * from Things where Name LIKE ? OR Price LIKE ? LIMIT 12", ('%'+t+'%', '%'+t+'%'))
+            rows = cur.fetchall()
+            
+            for row in rows:
+                #printing second & third column(See tuples)
+                label = ""
+                label += row[1] + "\n" + row[2] + "\n"
+                self.labelVariable.set(label)
         print ""
 if __name__ == "__main__":
     app = simpleapp_tk(None)
