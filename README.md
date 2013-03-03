@@ -1,4 +1,14 @@
-wiki-serach
+Wiki Search
 ===========
 
-An editable search engine in python/PHP
+An editable search engine in python/PHP.
+
+HELP
+===========
+
+Type "HELP" for assistance.
+
+HISTORY
+===========
+
+Type "HISTORY" for recent searches.
